@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StayNear - Find Hostels & PGs</title>
+    <link rel="stylesheet" href="Style.css">
+    <link rel="stylesheet" href="SideBar.css">
+    
+    <script defer src="HomeScript.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    
+</head>
+<body>
+    <a href="Register.html" class="login-button" id="login-button" style="background-color:#f44336; cursor: pointer;">Login / Sign Up</a>
+      <!-- Navbar -->
+    <nav class="navbar">
+        <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+
+        <div class="sidebar" id="sidebar">
+            <a href="#">Setting</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Report Issue</a>
+             
+             
+        </div>
+        <h1 class="logo">
+            <img src="Logo.jpg" alt="StayNear Logo" class="logo-img">
+            StayNear
+        </h1>
+    </nav>
+     
+        <script>
+        function toggleSidebar() {
+            const sidebar = document.getElementById("sidebar");
+            sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+        }
+    </script>
+     
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h2>Find the Best Hostels & PGs Near You!</h2>
+        <p>Your perfect stay is just a search away.</p>
+    </section>
+
+    <!-- Featured Listings -->
+    <section class="featured">
+        <h3>Featured Hostels</h3>
+        <div class="listing-container">
+            <div class="listing-card">
+                <img src="https://via.placeholder.com/300" alt="Hostel">
+                <h4>Elite PG</h4>
+                <p>Near ABC College</p>
+                <p class="price">₹5,000/month</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 StayNear. All rights reserved.</p>
+    </footer>
+     
+</body>
+</html>
