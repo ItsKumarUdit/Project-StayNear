@@ -6,61 +6,221 @@
     <title>StayNear - Find Hostels & PGs</title>
     <link rel="stylesheet" href="Style.css">
     <link rel="stylesheet" href="SideBar.css">
-    
     <script defer src="HomeScript.js"></script>
     <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-    
 </head>
 <body>
-    <a href="Register.html" class="login-button" id="login-button" style="background-color:#f44336; cursor: pointer;">Login / Sign Up</a>
-      <!-- Navbar -->
-    <nav class="navbar">
-        <div class="hamburger" onclick="toggleSidebar()">&#9776;</div>
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="hamburger" onclick="toggleSidebar()">☰</div>
+    <div class="sidebar" id="sidebar">
+        <a href="#">Your Activities</a>
+        <a href="#">Report Issue</a>
+        <a href="#">About us</a>
+        <a href="#">Setting</a>
+    </div>
+    <h1 class="logo">
+        <img src="Logo.jpg" alt="StayNear Logo" class="logo-img">
+        StayNear
+    </h1>
+    <div class="nav-items">
+        <a href="Home.html">Home</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About Us</a>
+    </div>
+    <a href="Register.html" class="login-button" style="background: #2196F3; color: white; padding: 10px 20px; border-radius: 5px; text-decoration: none; transition: 0.3s;">Login / Sign Up</a>
+</nav>
 
-        <div class="sidebar" id="sidebar">
-            <a href="#">Setting</a>
-            <a href="#">Contact Us</a>
-            <a href="#">Report Issue</a>
-             
-             
+<!-- Hero Section -->
+<section class="hero">
+    <h2>Find the Best Hostels & PGs Near You!</h2>
+    <p>Your perfect stay is just a search away.</p>
+</section>
+<div class="slider-container">
+    <div class="slider" id="slider">
+        <img src="Pic9.png" alt="Hostel Image 1">
+        
+        <img src="Pic10.png" alt="Hostel Image 2">
+        <img src="Pic11.png" alt="Hostel Image 3">
+        <img src="Pic12.png" alt="Hostel Image 4">
+    </div>
+    <div class="slider-arrow left-arrow">❮</div>
+    <div class="slider-arrow right-arrow">❯</div>
+    <div class="slider-dots">
+        <span class="slider-dot active" data-index="0"></span>
+        <span class="slider-dot" data-index="1"></span>
+        <span class="slider-dot" data-index="2"></span>
+        <span class="slider-dot" data-index="3"></span>
+    </div>
+</div>
+
+<!-- How It Works Section -->
+<section class="how-it-works">
+    <h3>Simple Steps to Find the Perfect Stay!</h3>
+    <div class="steps">
+        <div class="step">
+            <img src="Pic1.png" alt="Search Hostel">
+            <h4>Search Nearby</h4>
+            <p>Search based on location where you want to stay.</p>
         </div>
-        <h1 class="logo">
-            <img src="Logo.jpg" alt="StayNear Logo" class="logo-img">
-            StayNear
-        </h1>
-    </nav>
-     
-        <script>
-        function toggleSidebar() {
-            const sidebar = document.getElementById("sidebar");
-            sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+        <div class="step">
+            <img src="Pic2.png" alt="Compare">
+            <h4>Compare & Choose</h4>
+            <p>Compare amenities, prices, and ratings to select the best accommodation.</p>
+        </div>
+        <div class="step">
+            <img src="Pic3.png" alt="Book">
+            <h4>Book Instantly</h4>
+            <p>Reserve your preferred hostel or PG directly through our platform.</p>
+        </div>
+        <div class="step">
+            <img src="Pic4.png" alt="Enjoy Stay">
+            <h4>Enjoy Your Stay</h4>
+            <p>Move in and enjoy a comfortable and safe stay with verified accommodations.</p>
+        </div>
+    </div>
+</section>
+<section class="how-it-works">
+    <h3>Simple Steps to register your hostel!</h3>
+    <div class="steps">
+        <div class="step">
+            <img src="Pic5.png" alt="Search Hostel">
+            <h4>Login/SignUp</h4>
+            <p>Login/SignUp first on StayNear website.</p>
+        </div>
+        <div class="step">
+            <img src="Pic6.png" alt="Compare">
+            <h4>Hostel Details</h4>
+            <p>Fill all the required details about your hostel.</p>
+        </div>
+        <div class="step">
+            <img src="Pic7.png" alt="Book">
+            <h4>Submit Details</h4>
+            <p>After filling the details click on submit button.</p>
+        </div>
+        <div class="step">
+            <img src="Pic8.png" alt="Enjoy Stay">
+            <h4>Get Notified</h4>
+            <p>Get notified when someone shows interest in your hostel.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+    <p>© 2025 StayNear. All rights reserved.</p>
+</footer>
+
+<script>
+    // Sidebar toggle
+    function toggleSidebar() {
+        const sidebar = document.getElementById("sidebar");
+        sidebar.style.left = sidebar.style.left === "0px" ? "-250px" : "0px";
+    }
+
+    // Slider functionality
+    let currentIndex = 0;
+const slider = document.getElementById('slider');
+const images = slider.children;
+const totalImages = images.length;
+let autoSlideInterval;
+
+// Get all dot elements
+const dotsContainer = document.querySelector('.slider-dots');
+const dots = document.querySelectorAll('.slider-dot');
+
+function updateSlider() {
+    if (slider) {
+        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+        
+        // Update active dot
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentIndex);
+        });
+    } else {
+        console.error("Slider element not found!");
+    }
+}
+
+function goToSlide(index) {
+    clearInterval(autoSlideInterval);
+    currentIndex = index;
+    updateSlider();
+    startAutoSlide();
+}
+
+function nextSlide() {
+    console.log("Next slide clicked");
+    clearInterval(autoSlideInterval);
+    currentIndex++;
+    if (currentIndex >= totalImages) {
+        currentIndex = 0;
+    }
+    updateSlider();
+    startAutoSlide();
+}
+
+function prevSlide() {
+    console.log("Previous slide clicked");
+    clearInterval(autoSlideInterval);
+    currentIndex--;
+    if (currentIndex < 0) {
+        currentIndex = totalImages - 1;
+    }
+    updateSlider();
+    startAutoSlide();
+}
+
+function startAutoSlide() {
+    autoSlideInterval = setInterval(() => {
+        currentIndex++;
+        if (currentIndex >= totalImages) {
+            currentIndex = 0;
         }
-    </script>
-     
+        updateSlider();
+    }, 3000);
+}
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h2>Find the Best Hostels & PGs Near You!</h2>
-        <p>Your perfect stay is just a search away.</p>
-    </section>
+// Ensure DOM is loaded before adding event listeners
+document.addEventListener('DOMContentLoaded', () => {
+    // Add event listeners for arrows
+    const leftArrow = document.querySelector('.left-arrow');
+    const rightArrow = document.querySelector('.right-arrow');
 
-    <!-- Featured Listings -->
-    <section class="featured">
-        <h3>Featured Hostels</h3>
-        <div class="listing-container">
-            <div class="listing-card">
-                <img src="https://via.placeholder.com/300" alt="Hostel">
-                <h4>Elite PG</h4>
-                <p>Near ABC College</p>
-                <p class="price">₹5,000/month</p>
-            </div>
-        </div>
-    </section>
+    if (leftArrow && rightArrow) {
+        leftArrow.addEventListener('click', prevSlide);
+        rightArrow.addEventListener('click', nextSlide);
+    } else {
+        console.error("Arrow elements not found!");
+    }
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 StayNear. All rights reserved.</p>
-    </footer>
-     
+    // Add event listeners for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            goToSlide(index);
+        });
+    });
+
+    // Initialize dots (make first one active)
+    if (dots.length > 0) {
+        dots[0].classList.add('active');
+    }
+
+    // Start auto-sliding
+    startAutoSlide();
+
+    // Pause auto-slide on hover
+    if (slider) {
+        slider.addEventListener('mouseenter', () => {
+            clearInterval(autoSlideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', () => {
+            startAutoSlide();
+        });
+    }
+});
+</script>
 </body>
 </html>
