@@ -77,3 +77,41 @@ a:hover {
     text-decoration: underline;
     color: #0056b3;
 }
+
+.back-button {
+    margin-top: 15px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 20px;
+    background: linear-gradient(135deg, #1976D2, #42A5F5);  /* Modern gradient */
+    color: white !important;   /* Ensures text stays white */
+    text-decoration: none;
+    border-radius: 30px;        
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-weight: bold;
+    letter-spacing: 0.5px;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 150px;
+    text-align: center;
+    font-size: 16px;
+    user-select: none;          /* Prevents text selection */
+}
+
+/* Hover effect */
+.back-button:hover {
+    background: linear-gradient(135deg, #1565C0, #1E88E5);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+    transform: translateY(-3px);
+    color: white !important;    /* Ensures white text on hover */
+}
+
+/* Prevents text color change on click */
+.back-button:active,
+.back-button:focus {
+    color: white !important;    /* Force white text on click */
+    outline: none;              /* Removes outline border */
+}
+
